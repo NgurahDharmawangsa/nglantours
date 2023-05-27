@@ -18,6 +18,12 @@
                         </ol>
                     </nav>
                 </div>
+                @if (Session::has('status'))
+                    <div class="alert alert-success alert-dismissible show fade">
+                        {{Session::get('message')}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -69,7 +75,8 @@
                                                     href="{{ route('destination.show', $data->id) }}"><span
                                                         class="dropdown-item-emoji bi bi-archive-fill text-success me-2"></span>
                                                     Detail</a>
-                                                <a class="dropdown-item text-white" href="#"><span
+                                                <a class="dropdown-item text-white"
+                                                    href="{{ route('destination.edit', $data->id) }}"><span
                                                         class="dropdown-item-emoji bi bi-pencil-fill text-primary me-2"></span>
                                                     Edit</a>
                                                 <a class="dropdown-item text-white" href="#"><span

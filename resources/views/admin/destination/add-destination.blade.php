@@ -35,7 +35,8 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" action="{{ route('destination.store') }}" method="post" enctype="multipart/form-data">
+                                <form class="form form-horizontal" action="{{ route('destination.store') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     {{-- @method('POST') --}}
                                     <div class="form-body">
@@ -44,21 +45,21 @@
                                                 <label>Nama Destinasi</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="name" class="form-control" name="name"
-                                                    placeholder="Nama Destinasi">
+                                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name">
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Deskripsi</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                                                <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Gambar</label>
                                             </div>
                                             <div class="col-md-10 form-group">
                                                 {{-- <input type="file" class="multiple-files-filepond" id="formFile" name="image[]" multiple> --}}
-                                                <input class="form-control" type="file" id="formFile" name="image[]" multiple>
+                                                <input class="form-control @error('image') is-invalid @enderror" type="file" id="formFile" name="image[]"
+                                                    multiple>
                                             </div>
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>

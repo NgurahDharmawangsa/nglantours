@@ -53,7 +53,9 @@ class PackagesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $packages = Packages::findOrFail($id);
+        $destination = Destination::select('id', 'name')->get();
+        return view('admin.packages.edit-packages', compact('packages', 'destination'));
     }
 
     /**
@@ -61,7 +63,10 @@ class PackagesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $packages = Packages::findOrFail($id);
+        $packages->update($request->all());
+        $packages->destination()->sync($request->destination);
+        return redirect()->route('packages.index');
     }
 
     /**

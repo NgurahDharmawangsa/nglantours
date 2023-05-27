@@ -48,7 +48,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="galleryModalTitle">Our Gallery Example</h5>
+                        <h5 class="modal-title" id="galleryModalTitle">Detail Gambar</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>

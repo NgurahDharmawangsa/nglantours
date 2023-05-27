@@ -16,15 +16,19 @@
     <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/pages/datatables.css') }}">
 
-    <link rel="stylesheet" href="{{asset('assets/extensions/filepond/filepond.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/extensions/toastify-js/src/toastify.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/pages/filepond.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/filepond/filepond.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/toastify-js/src/toastify.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/filepond.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/extensions/flatpickr/flatpickr.min.css') }}" />
 
 
 </head>
 
 <body>
+    {{-- <script src="{{asset('assets/static/js/initTheme.js')}}"></script> --}}
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -114,14 +118,21 @@
             <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 
             {{-- datatables --}}
-            <script src="{{asset('assets/extensions/jquery/jquery.min.js')}}"></script>
+            <script src="{{ asset('assets/extensions/jquery/jquery.min.js') }}"></script>
             <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
-            <script src="{{asset('assets/js/pages/datatables.js')}}"></script>
+            <script src="{{ asset('assets/js/pages/datatables.js') }}"></script>
 
             {{-- Image Uploader --}}
-            <script src="{{asset('assets/extensions/filepond/filepond.js')}}"></script>
-            <script src="{{asset('assets/extensions/toastify-js/src/toastify.js')}}"></script>
-            <script src="{{asset('assets/js/pages/filepond.js')}}"></script>
+            <script src="{{ asset('assets/extensions/filepond/filepond.js') }}"></script>
+            <script src="{{ asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
+            <script src="{{ asset('assets/js/pages/filepond.js') }}"></script>
+
+            {{-- Date Picker --}}
+            <script src="{{ asset('assets/extensions/flatpickr/flatpickr.min.js') }}"></script>
+            <script src="{{ asset('assets/static/js/pages/date-picker.js') }}"></script>
+            <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>
+            <script src="{{ asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+            <script src="{{ asset('assets/compiled/js/app.js') }}"></script>
 
 </body>
 
