@@ -1,10 +1,10 @@
 @section('navbar')
-    <header class='mb-3'>
+    <header class='mb-0'>
         <nav class="navbar navbar-expand navbar-light navbar-top">
             <div class="container-fluid">
-                <a href="#" class="burger-btn d-block">
+                {{-- <a href="#" class="burger-btn d-block">
                     <i class="bi bi-justify fs-3"></i>
-                </a>
+                </a> --}}
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
