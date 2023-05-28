@@ -35,3 +35,11 @@ Route::get('/destination-add', function () {
 //     return view('admin.packages.packages');
 // });
 Route::resource('/packages', PackagesController::class);
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
