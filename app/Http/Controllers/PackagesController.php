@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Destination;
 use App\Models\Packages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class PackagesController extends Controller
 {
@@ -31,10 +33,30 @@ class PackagesController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        // $data = $request->all();
         $destination = $request->input('destination', []);
-        $packages = Packages::create($data);
+
+        // upload images
+        $image = $request->file('image');
+        // dd($image);
+        $image->storeAs('public/packages', $image->hashName());
+
+        // $packages = Packages::create($data);
+        $packages = Packages::create([
+            'image'     => $image->hashName(),
+            'name'     => $request->name,
+            'start_date'   => $request->start_date,
+            'end_date'   => $request->end_date,
+            'price'   => $request->price,
+            'max_capacity'   => $request->max_capacity
+        ]);
         $packages->destination()->sync($destination);
+
+        if ($packages) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Destination Berhasil di Tambah');
+        }
+
         return redirect()->route('packages.index');
     }
 
@@ -64,8 +86,42 @@ class PackagesController extends Controller
     public function update(Request $request, string $id)
     {
         $packages = Packages::findOrFail($id);
-        $packages->update($request->all());
+        // $packages->update($request->all());
+        if ($request->hasFile('image')) {
+            // upload new image (request dari form)
+            $image = $request->file('image');
+            $image->storeAs('public/packages', $image->hashName());
+
+            // delete old image
+            $filePath = 'packages/' . $packages->image;
+            Storage::disk('public')->delete($filePath);
+            // Storage::delete('public/packages/' . $packages->image);
+
+            // update packages with new image
+            $packages->update([
+                'image'     => $image->hashName(),
+                'name'     => $request->name,
+                'start_date'   => $request->start_date,
+                'end_date'   => $request->end_date,
+                'price'   => $request->price,
+                'max_capacity'   => $request->max_capacity
+            ]);
+        } else {
+            // update packages without image
+            $packages->update([
+                'name'     => $request->name,
+                'start_date'   => $request->start_date,
+                'end_date'   => $request->end_date,
+                'price'   => $request->price,
+                'max_capacity'   => $request->max_capacity
+            ]);
+        }
         $packages->destination()->sync($request->destination);
+
+        if ($packages) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Destination Berhasil di Tambah');
+        }
         return redirect()->route('packages.index');
     }
 
@@ -74,6 +130,13 @@ class PackagesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // get post by ID
+        $packages = Packages::findOrFail($id);
+
+        // delete post
+        $packages->delete();
+
+        // redirect to index
+        // return redirect()->route('packages.index');
     }
 }

@@ -60,19 +60,26 @@
                                             </div>
                                             <div class="col-md-10 form-group d-flex flex-wrap">
                                                 @foreach (json_decode($destination->image) as $index => $image)
-                                                <div class="mb-2 me-2 position-relative">
-                                                    <img src="{{ asset('storage/destination/' . $image) }}" alt="Gambar" class="img-thumbnail"
-                                                        style="height: 100px; width: auto;">
-                                                    <button type="button"
-                                                        class="btn btn-danger btn-sm position-absolute top-0 end-0 mt-1"
-                                                        onclick="deleteImage(this, {{ $index }})">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                    <input type="hidden" name="existing_images[]" value="{{ $image }}">
-                                                </div>
+                                                    <div class="mb-2 me-2 position-relative">
+                                                        <img src="{{ asset('storage/destination/' . $image) }}"
+                                                            alt="Gambar" class="img-thumbnail"
+                                                            style="height: 100px; width: auto;">
+                                                        <button type="button"
+                                                            class="btn btn-danger btn-sm position-absolute top-0 end-0 mt-1"
+                                                            onclick="deleteImage(this, {{ $index }})">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                        <input type="hidden" name="existing_images[]"
+                                                            value="{{ $image }}">
+                                                    </div>
                                                 @endforeach
-                                                <input class="form-control" type="file" id="formFile" name="image[]" multiple>
+                                                <input class="form-control" type="file" id="formFile" name="image[]"
+                                                    multiple>
                                             </div>
+                                            @foreach (json_decode($destination->image) as $index => $image)
+                                                <input type="hidden" name="deleted_images[]"
+                                                    id="deletedImage{{ $index }}">
+                                            @endforeach
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
                                             </div>
@@ -86,34 +93,14 @@
             </div>
         </section>
     </div>
-        <script>
-            function deleteImage(button, index) {
-                // Dapatkan elemen gambar terkait
-                const elemenGambar = button.parentNode.querySelector('.img-thumbnail');
-        
-                // Hapus elemen gambar
-                elemenGambar.remove();
-        
-                // Hapus tombol hapus
-                button.remove();
-        
-                // Set nilai input tersembunyi menjadi 1
-                const inputGambarTerhapus = document.getElementById(`deletedImage${index}`);
-                inputGambarTerhapus.value = '1';
-        
-                // Perbarui indeks elemen gambar dan tombol hapus
-                const elemenGambarLainnya = document.querySelectorAll('.img-thumbnail');
-                const tombolHapusLainnya = document.querySelectorAll('.btn-danger');
-        
-                for (let i = index; i < elemenGambarLainnya.length; i++) {
-                    elemenGambarLainnya[i].id = `gambar${i}`;
-                    tombolHapusLainnya[i].id = `tombolHapus${i}`;
-                    tombolHapusLainnya[i].setAttribute('onclick', `deleteImage(this, ${i})`);
-        
-                    const inputGambarTerhapus = document.getElementById(`deletedImage${i + 1}`);
-                    inputGambarTerhapus.id = `deletedImage${i}`;
-                }
-            }
-        </script>        
-        <!-- // Basic Horizontal form layout section end -->
-    @endsection
+    <script>
+        function deleteImage(button, index) {
+            const elemenGambar = button.parentNode;
+            elemenGambar.remove();
+
+            const inputGambarTerhapus = document.getElementById(`deletedImage${index}`);
+            inputGambarTerhapus.value = '1';
+        }
+    </script>
+    <!-- // Basic Horizontal form layout section end -->
+@endsection

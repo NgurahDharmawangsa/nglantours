@@ -24,11 +24,14 @@
 
     <link rel="stylesheet" href="{{ asset('assets/extensions/flatpickr/flatpickr.min.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body>
-    {{-- <script src="{{asset('assets/static/js/initTheme.js')}}"></script> --}}
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -133,6 +136,10 @@
             <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>
             <script src="{{ asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
             <script src="{{ asset('assets/compiled/js/app.js') }}"></script>
+
+            {{-- Sweet Alert --}}
+            <script src="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>
+            <script src="{{ asset('assets/js/pages/sweetalert2.js') }}"></script>
 
 </body>
 

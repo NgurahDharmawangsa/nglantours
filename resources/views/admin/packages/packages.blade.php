@@ -25,6 +25,18 @@
             </div>
         </div>
 
+        @if (Session::has('status'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '{{ Session::get('message') }}',
+                    showConfirmButton: false,
+                    timer: 3000 // Durasi tampilan SweetAlert dalam milidetik (misalnya 3000 untuk 3 detik)
+                });
+            </script>
+        @endif
+
         <!-- Basic Tables start -->
         <section class="section">
             <div class="card">
@@ -44,7 +56,7 @@
                         </thead>
                         <tbody>
                             @foreach ($packages as $data)
-                                @php                                    
+                                @php
                                     $startDate = Carbon::parse($data->start_date);
                                     $endDate = Carbon::parse($data->end_date);
                                     $diffInDays = $startDate->diffInDays($endDate);
@@ -52,7 +64,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $diffInDays}} Hari</td>
+                                    <td>{{ $diffInDays }} Hari</td>
                                     <td>{{ $data->price }}</td>
                                     <td>
                                         <div class="dropdown">
@@ -65,12 +77,20 @@
                                                     href="{{ route('packages.show', $data->id) }}"><span
                                                         class="dropdown-item-emoji bi bi-archive-fill text-success me-2"></span>
                                                     Detail</a>
-                                                <a class="dropdown-item text-white" href="{{ route('packages.edit', $data->id) }}"><span
+                                                <a class="dropdown-item text-white"
+                                                    href="{{ route('packages.edit', $data->id) }}"><span
                                                         class="dropdown-item-emoji bi bi-pencil-fill text-primary me-2"></span>
                                                     Edit</a>
-                                                <a class="dropdown-item text-white" href="#"><span
-                                                        class="dropdown-item-emoji bi bi-trash-fill text-danger me-2"></span>
-                                                    Hapus</a>
+                                                <form action="{{ route('packages.destroy', $data->id) }}" method="POST"
+                                                    style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item text-white btn-delete-post">
+                                                        <span
+                                                            class="dropdown-item-emoji bi bi-trash-fill text-danger me-2"></span>
+                                                        Hapus
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>
@@ -86,6 +106,52 @@
                 }
             </style>
 
+            <script>
+                $(document).ready(function() {
+                    // Event handler untuk tombol delete
+                    $('.btn-delete-post').click(function(e) {
+                        e.preventDefault(); // Mencegah aksi default (submit form)
+
+                        // Konfirmasi penghapusan menggunakan SweetAlert
+                        Swal.fire({
+                            title: 'Apakah Anda yakin ingin menghapus data ini?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Ya, Hapus',
+                            cancelButtonText: 'Batal',
+                            cancelButtonColor: '#d33',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                var form = $(this).closest('form'); // Temukan form terdekat
+                                var dataContainer = $(this).closest(
+                                    'tr'); // Temukan baris tabel yang berisi data
+                                var dataTable = $('#table1').DataTable(); // Inisialisasi objek DataTable
+
+                                $.ajax({
+                                    url: form.attr('action'), // Ambil URL aksi form
+                                    type: 'POST',
+                                    data: form.serialize(), // Serialize form data
+                                    success: function(response) {
+                                        // Tindakan setelah penghapusan berhasil
+                                        // Misalnya, perbarui tampilan data atau tampilkan pesan sukses
+                                        dataTable.row(dataContainer).remove()
+                                            .draw(); // Hapus baris tabel dari tampilan dan perbarui tabel DataTable
+                                        Swal.fire('Sukses', 'Data berhasil dihapus.',
+                                            'success');
+                                    },
+                                    error: function(xhr) {
+                                        // Tindakan jika terjadi kesalahan saat penghapusan
+                                        // Misalnya, tampilkan pesan kesalahan
+                                        Swal.fire('Error',
+                                            'Terjadi kesalahan saat menghapus data.',
+                                            'error');
+                                    }
+                                });
+                            }
+                        });
+                    });
+                });
+            </script>
         </section>
         <!-- Basic Tables end -->
     @endsection

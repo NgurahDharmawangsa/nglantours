@@ -23,14 +23,19 @@
             </div>
         </div>
 
-        <div class="col-md-12 col-sm-12 mt-4">
+        <div class="col-md-12 col-sm-12">
             <div class="card">
-                <div class="card-content">                    
-                    <div class="card-body">
-                        <h6 class="card-title">{{$packages->name}}  </h6>
-                        <p class="card-text">
-                            {{$packages->name}}
-                        </p>
+                <div class="card-header">
+                    <h5 class="card-title">{{ $packages->name }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row gallery align-items-stretch" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                        <div class="col-6 col-sm-6 col-lg-3 mt-2 mt-md-2 mb-md-2 mb-2">
+                            <a href="#">
+                                <img class="w-100 h-100" src="{{ asset('storage/packages/' . $packages->image) }}"
+                                    data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

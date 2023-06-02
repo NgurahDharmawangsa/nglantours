@@ -50,7 +50,7 @@
                                             </div>
                                             <div class="col-md-10 form-group">
                                                 <input type="date" id="form-control flatpickr-range mb-3"
-                                                    class="form-control" name="end_date" value="{{ $packages->start_date }}"
+                                                    class="form-control" name="start_date" value="{{ $packages->start_date }}"
                                                     placeholder="Select date..">
                                             </div>
                                             <div class="col-md-2">
@@ -74,6 +74,16 @@
                                             <div class="col-md-10 form-group">
                                                 <input type="text" id="max_capacity" class="form-control"
                                                     name="max_capacity" value="{{ $packages->max_capacity }}">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Gambar</label>
+                                            </div>
+                                            <div class="col-md-10 form-group">
+                                                <img src="{{ asset('storage/packages/' . $packages->image) }}"
+                                                    alt="Gambar" class="img-thumbnail"
+                                                    style="height: 100px; width: auto;">
+                                                <input type="file" id="image" class="form-control mt-2"
+                                                    name="image">
                                             </div>
                                             <div class="col-md-2">
                                                 <label for="destination-dropdown">Pilih Destinasi</label>

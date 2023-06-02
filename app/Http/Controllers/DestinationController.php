@@ -51,6 +51,11 @@ class DestinationController extends Controller
 
         $destination->save();
 
+        if ($destination) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Destination Berhasil di Tambah');
+        }
+
         return redirect()->route('destination.index');
     }
 
@@ -82,38 +87,40 @@ class DestinationController extends Controller
     {
         $destination = Destination::findOrFail($id);
 
-        // Mendapatkan daftar gambar yang akan dihapus
         $deletedImages = $request->input('deleted_images', []);
+        $existingImages = $request->input('existing_images', []);
+        $images = [];
 
-        // Menghapus gambar yang dipilih dari array gambar
-        $images = json_decode($destination->image, true);
+        // dd($deletedImages);
 
-        // Array untuk menyimpan gambar yang akan dipertahankan
-        $keptImages = [];
-
-        // Menghapus gambar yang dipilih dan menghapus file dari storage
-        foreach ($images as $image) {
-            if (!in_array($image, $deletedImages)) {
-                $keptImages[] = $image;
-            } else {
-                Storage::delete('public/destination/' . $image);
-            }
-        }
-
-        // Menyimpan gambar baru yang diunggah
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $file) {
-                $filename = $file->hashName(); // Menghasilkan nama file yang di-hash secara acak
-                $file->storeAs('public/destination', $filename); // Menyimpan gambar dengan nama file yang di-hash
-                $keptImages[] = $filename; // Menambahkan nama file ke array gambar yang akan dipertahankan
+                $filename = $file->hashName();
+                $file->storeAs('public/destination', $filename);
+                $images[] = $filename;
             }
         }
 
-        // Mengupdate array gambar dengan gambar yang dipertahankan
-        $destination->image = json_encode($keptImages);
+        // Menggabungkan gambar yang ada dengan gambar baru
+        $images = array_merge($existingImages, $images);
 
-        // $destination->update($request->except(['deleted_images']));
-        $destination->save();
+        $deletedImages = json_decode($destination->image, true);
+        $deletedFiles = array_diff($deletedImages, $images);
+        // dd($deletedFiles);
+
+        // Menghapus gambar yang dipilih
+        foreach ($deletedFiles as $filename) {
+            $filePath = 'destination/' . $filename;
+            Storage::disk('public')->delete($filePath);
+        }
+
+        $destination->image = json_encode($images);
+
+        if ($request->hasFile('image')){
+            $destination->save();
+        }else{
+            $destination->update($request->all());
+        }
 
         if ($destination) {
             Session::flash('status', 'success');
@@ -129,6 +136,22 @@ class DestinationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Get destination by ID
+        $destination = Destination::findOrFail($id);
+
+        // Delete images
+        $images = json_decode($destination->image, true);
+        foreach ($images as $image) {
+            $filePath = 'destination/' . $image;
+            Storage::disk('public')->delete($filePath);
+        }
+
+        // Delete destination
+        $destination->delete();
+
+        // Redirect to index or any other appropriate action
+        // return redirect()->route('destination.index');
+
+        // return response()->json(['message' => 'Data berhasil dihapus'], 204);
     }
 }

@@ -14,6 +14,10 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8" />
 		<!-- Site Title -->
+
+		<link rel="shortcut icon" href="{{ asset('assets/client/logo/favicon-logo.png') }}" type="image/x-icon">
+		<link rel="shortcut icon" href="{{ asset('assets/client/logo/favicon-logo.png') }}" type="image/png">
+
 		<title>@yield('title')</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet" />
