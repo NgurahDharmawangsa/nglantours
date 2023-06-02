@@ -35,7 +35,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" action="{{route('packages.store')}}" method="post">
+                                <form class="form form-horizontal" action="{{route('packages.store')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
@@ -73,6 +73,12 @@
                                             <div class="col-md-10 form-group">
                                                 <input type="number" id="first-name" class="form-control" name="max_capacity"
                                                     placeholder="Kapasitas Maksimal">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Gambar</label>
+                                            </div>
+                                            <div class="col-md-10 form-group">
+                                                <input class="form-control" type="file" id="formFile" name="image">
                                             </div>
                                             <div class="col-md-2">
                                                 <label for="destination-dropdown">Pilih Destinasi</label>
