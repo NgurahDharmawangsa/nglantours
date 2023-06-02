@@ -16,61 +16,17 @@
                 </div>
                 <div class="col-lg-4 col-md-6 banner-right mt-5">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="flight-tab" data-toggle="tab" href="#flight" role="tab"
-                                aria-controls="flight" aria-selected="true">Flights</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab"
-                                aria-controls="hotel" aria-selected="false">Hotels</a>
-                        </li>
+                       
+                       
                         <li class="nav-item">
                             <a class="nav-link" id="holiday-tab" data-toggle="tab" href="#holiday" role="tab"
                                 aria-controls="holiday" aria-selected="false">Holidays</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
-                            <form class="form-wrap">
-                                <input type="text" class="form-control" name="name" placeholder="From "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '" />
-                                <input type="text" class="form-control" name="to" placeholder="To "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '" />
-                                <input type="text" class="form-control date-picker" name="start" placeholder="Start "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '" />
-                                <input type="text" class="form-control date-picker" name="return" placeholder="Return "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '" />
-                                <input type="number" min="1" max="20" class="form-control" name="adults"
-                                    placeholder="Adults " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Adults '" />
-                                <input type="number" min="1" max="20" class="form-control" name="child"
-                                    placeholder="Child " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Child '" />
-                                <a href="#" class="primary-btn text-uppercase">Search flights</a>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
-                            <form class="form-wrap">
-                                <input type="text" class="form-control" name="name" placeholder="From "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '" />
-                                <input type="text" class="form-control" name="to" placeholder="To "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '" />
-                                <input type="text" class="form-control date-picker" name="start"
-                                    placeholder="Start " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Start '" />
-                                <input type="text" class="form-control date-picker" name="return"
-                                    placeholder="Return " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Return '" />
-                                <input type="number" min="1" max="20" class="form-control" name="adults"
-                                    placeholder="Adults " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Adults '" />
-                                <input type="number" min="1" max="20" class="form-control" name="child"
-                                    placeholder="Child " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Child '" />
-                                <a href="#" class="primary-btn text-uppercase">Search Hotels</a>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="holiday-tab">
+                       
+                       
+                        <div class="tab-pane fade show active" id="holiday" role="tabpanel" aria-labelledby="holiday-tab">
                             <form class="form-wrap">
                                 <input type="text" class="form-control" name="name" placeholder="From "
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '" />
@@ -152,68 +108,6 @@
                 <div class="col-lg-4">
                     <div class="single-price">
                         <h4>Cheap Packages</h4>
-                        <ul class="price-list">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>New York</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Maldives</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Sri Lanka</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Nepal</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Thiland</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Singapore</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-price">
-                        <h4>Luxury Packages</h4>
-                        <ul class="price-list">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>New York</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Maldives</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Sri Lanka</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Nepal</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Thiland</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Singapore</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-price">
-                        <h4>Camping Packages</h4>
                         <ul class="price-list">
                             <li class="d-flex justify-content-between align-items-center">
                                 <span>New York</span>
@@ -431,7 +325,7 @@
     <!-- End home-about Area -->
 
     <!-- Start blog Area -->
-    <section class="recent-blog-area section-gap">
+   <!-- <section class="recent-blog-area section-gap">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-60 col-lg-9">
@@ -585,6 +479,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End recent-blog Area -->
 @endsection
