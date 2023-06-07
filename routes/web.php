@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackagesController;
@@ -22,12 +24,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-});
+// Route::get('/dashboard', function () {
+//     return view('admin.index');
+// })->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'count'])->middleware(['auth', 'must-admin'])->name('dashboard');
 
 // Route::get('/destination', [DestinationController::class, 'index']);
-Route::resource('/destination', DestinationController::class)->middleware('auth');
+Route::resource('/destination', DestinationController::class)->middleware(['auth', 'must-admin']);
 
 Route::get('/destination-add', function () {
     return view('admin.destination.add-destination');
@@ -37,8 +41,8 @@ Route::get('/destination-add', function () {
 // Route::get('/packages', function () {
 //     return view('admin.packages.packages');
 // });
-Route::resource('/packages', PackagesController::class);
+Route::resource('/packages', PackagesController::class)->middleware(['auth', 'must-admin']);
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
+Route::get('/logout', [AuthController::class, 'logout']);
