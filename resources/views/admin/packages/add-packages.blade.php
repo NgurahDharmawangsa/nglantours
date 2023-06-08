@@ -3,6 +3,7 @@
 @section('title', 'Destination')
 
 @section('content')
+
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
@@ -43,46 +44,63 @@
                                                 <label>Paket Wisata</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="name" class="form-control" name="name"
-                                                    placeholder="Nama Paket Wisata">
+                                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama Paket Wisata">
+                                                @error('name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Keberangkatan</label>
                                             </div>
+
                                             <div class="col-md-10 form-group">
-                                                <input type="date" id="start_date" class="form-control" name="start_date"
-                                                    placeholder="Nama Destinasi">
+                                                <input type="date" id="start_date" class="form-control @error('start_date') is-invalid @enderror" name="start_date">
+                                                @error('start_date')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Kedatangan</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="date" id="first-name" class="form-control" name="end_date"
-                                                    placeholder="Nama Destinasi">
+                                                <input type="date" id="end_date" class="form-control @error('end_date') is-invalid @enderror" name="end_date">
+                                                @error('end_date')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Harga</label>
                                             </div>
+
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="first-name" class="form-control" name="price"
-                                                    placeholder="Harga">
+                                                <input type="text" id="first-name" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="Harga">
+                                                @error('price')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Kapasitas Maksimal</label>
                                             </div>
+
                                             <div class="col-md-10 form-group">
-                                                <input type="number" id="first-name" class="form-control" name="max_capacity"
-                                                    placeholder="Kapasitas Maksimal">
+                                                <input type="number" id="first-name" class="form-control @error('max_capacity') is-invalid @enderror" name="max_capacity" placeholder="Kapasitas Maksimal">
+                                                @error('max_capacity')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Gambar</label>
                                             </div>
+
                                             <div class="col-md-10 form-group">
-                                                <input class="form-control" type="file" id="formFile" name="image">
+                                                <input type="file" id="formfile" class="form-control @error('image') is-invalid @enderror" name="image">
+                                                @error('image')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label for="destination-dropdown">Pilih Destinasi</label>
-                                            </div>                                            
+                                            </div>
                                             <div class="dropdown col-md-10 form-group">
                                                 <button class="btn btn-primary dropdown-toggle me-1" type="button"
                                                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -102,7 +120,7 @@
                                                         @endforeach
                                                     </div>
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                                 <button type="reset"

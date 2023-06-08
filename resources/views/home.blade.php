@@ -106,68 +106,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="single-price">
-                        <h4>Luxury Packages</h4>
-                        <ul class="price-list">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>New York</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Maldives</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Sri Lanka</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Nepal</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Thiland</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Singapore</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-price">
-                        <h4>Camping Packages</h4>
-                        <ul class="price-list">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>New York</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Maldives</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Sri Lanka</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Nepal</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Thiland</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span>Singapore</span>
-                                <a href="#" class="price-btn">$1500</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -512,6 +450,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End recent-blog Area -->
 @endsection
