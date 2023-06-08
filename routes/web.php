@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 });
 
 // Route::get('/destination', [DestinationController::class, 'index']);
-Route::resource('/destination', DestinationController::class)->middleware('auth');
+Route::resource('/destination', DestinationController::class);
 
 Route::get('/destination-add', function () {
     return view('admin.destination.add-destination');
@@ -41,4 +41,4 @@ Route::resource('/packages', PackagesController::class);
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');

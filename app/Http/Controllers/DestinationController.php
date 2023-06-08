@@ -7,6 +7,8 @@ use App\Models\Destination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class DestinationController extends Controller
 {
@@ -33,32 +35,23 @@ class DestinationController extends Controller
     public function store(StoreDestinationRequest $request)
     {
 
-        // dd($request);
-        $images = $request->file('image');
-        $imageData = [];
+        // Upload image
+        $image = $request->file('image');
+        $image->storeAs('public/packages', $image->hashName());
 
-        foreach ($images as $image) {
-            $image->storeAs('public/destination', $image->hashName());
-            $imageData[] = $image->hashName();
-        }
-
-        // create post
-        $destination = Destination::create([
+        $packages = Packages::create([
+            'image' => $image->hashName(),
             'name' => $request->name,
-            'description' => $request->description,
-            'image' => json_encode($imageData)
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'price' => $request->price,
+            'max_capacity' => $request->max_capacity
         ]);
 
-        $destination->save();
+        // ...
 
-        if ($destination) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Destination Berhasil di Tambah');
-        }
-
-        return redirect()->route('destination.index');
+        return redirect()->route('packages.index');
     }
-
 
     /**
      * Display the specified resource.

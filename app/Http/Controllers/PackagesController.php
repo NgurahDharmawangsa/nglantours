@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Destination;
+use App\Http\Requests\StorePackagesRequest;
 use App\Models\Packages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PackagesController extends Controller
 {
@@ -31,34 +34,41 @@ class PackagesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // $data = $request->all();
-        $destination = $request->input('destination', []);
+    public function store(StorePackagesRequest $request)
+{
+    $validator = Validator::make($request->all(), [
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'name' => 'required',
+        'start_date' => 'required|date',
+        'end_date' => 'required|date|after_or_equal:start_date',
+        'price' => 'required|numeric',
+        'max_capacity' => 'required|integer',
+    ]);
 
-        // upload images
-        $image = $request->file('image');
-        // dd($image);
-        $image->storeAs('public/packages', $image->hashName());
-
-        // $packages = Packages::create($data);
-        $packages = Packages::create([
-            'image'     => $image->hashName(),
-            'name'     => $request->name,
-            'start_date'   => $request->start_date,
-            'end_date'   => $request->end_date,
-            'price'   => $request->price,
-            'max_capacity'   => $request->max_capacity
-        ]);
-        $packages->destination()->sync($destination);
-
-        if ($packages) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Destination Berhasil di Tambah');
-        }
-
-        return redirect()->route('packages.index');
+    if ($validator->fails()) {
+        return redirect()
+            ->back()
+            ->withErrors($validator)
+            ->withInput();
     }
+
+    // Upload image
+    $image = $request->file('image');
+    $image->storeAs('public/packages', $image->hashName());
+
+    $packages = Packages::create([
+        'image' => $image->hashName(),
+        'name' => $request->name,
+        'start_date' => $request->start_date,
+        'end_date' => $request->end_date,
+        'price' => $request->price,
+        'max_capacity' => $request->max_capacity
+    ]);
+
+    // ...
+
+    return redirect()->route('packages.index');
+}
 
     /**
      * Display the specified resource.
