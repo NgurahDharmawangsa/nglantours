@@ -7,46 +7,16 @@
         <div class="overlay overlay-bg"></div>
         <div class="container">
             <div class="row fullscreen align-items-center justify-content-between">
-                <div class="col-lg-6 col-md-6 banner-left">
-                    <h6 class="text-white">Away from monotonous life</h6>
-                    <h1 class="text-white">Magical Travel</h1>
+                <div class="col-lg-3 col-md-6 banner-left">
+                    <h1 class="text-white">Bali Travel</h1>
                     <p class="text-white">If you are looking at blank cassettes on the web, you may be very confused at the
                         difference in price. You may see some for as low as $.17 each.</p>
                     <a href="#" class="primary-btn text-uppercase">Get Started</a>
                 </div>
-                <div class="col-lg-4 col-md-6 banner-right mt-5">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                       
-                       
-                        <li class="nav-item">
-                            <a class="nav-link" id="holiday-tab" data-toggle="tab" href="#holiday" role="tab"
-                                aria-controls="holiday" aria-selected="false">Holidays</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                       
-                       
-                        <div class="tab-pane fade show active" id="holiday" role="tabpanel" aria-labelledby="holiday-tab">
-                            <form class="form-wrap">
-                                <input type="text" class="form-control" name="name" placeholder="From "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '" />
-                                <input type="text" class="form-control" name="to" placeholder="To "
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '" />
-                                <input type="text" class="form-control date-picker" name="start"
-                                    placeholder="Start " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Start '" />
-                                <input type="text" class="form-control date-picker" name="return"
-                                    placeholder="Return " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Return '" />
-                                <input type="number" min="1" max="20" class="form-control" name="adults"
-                                    placeholder="Adults " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Adults '" />
-                                <input type="number" min="1" max="20" class="form-control" name="child"
-                                    placeholder="Child " onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Child '" />
-                                <a href="#" class="primary-btn text-uppercase">Search Holidays</a>
-                            </form>
-                        </div>
+                <div class="col-lg-7 col-md-6 banner-right mt-5">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item rounded" src="https://www.youtube.com/embed/psNFdY9jhZ8?&theme=dark&autohide=2&modestbranding=1&showinfo=0" frameborder="0"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -56,7 +26,7 @@
 
     <!-- Start popular-destination Area -->
     <section class="popular-destination-area section-gap">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-70 col-lg-8">
                     <div class="title text-center">
@@ -76,13 +46,13 @@
                                 @php
                                     $images = json_decode($item->image);
                                 @endphp
-                                <img class="img-fluid" src="{{ asset('storage/destination/' . $images[0]) }}"
+                                <img class="img-fluid rounded" src="{{ asset('storage/destination/' . $images[0]) }}"
                                     alt="" />
                             </div>
                             <div class="desc">
                                 <a href="#" class="price-btn">Detail</a>
                                 <h4>{{ $item->name }}</h4>
-                                <p>{{ $item->description }}</p>
+                                <p>{{ Str::limit($item->description, 50) }}</p>
                             </div>
                         </div>
                     </div>
@@ -94,7 +64,7 @@
 
     <!-- Start price Area -->
     <section class="price-area section-gap">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-70 col-lg-8">
                     <div class="title text-center">
@@ -143,7 +113,7 @@
 
     <!-- Start other-issue Area -->
     <section class="other-issue-area section-gap">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-70 col-lg-9">
                     <div class="title text-center">
@@ -157,12 +127,13 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="single-other-issue">
                             <div class="thumb">
-                                <img class="img-fluid" src="{{ asset('storage/packages/' . $data->image) }}" alt="" />
+                                <img class="img-fluid" src="{{ asset('storage/packages/' . $data->image) }}"
+                                    alt="" />
                             </div>
                             <a href="#">
-                                <h4>{{$data->name}}</h4>
+                                <h4>{{ $data->name }}</h4>
                             </a>
-                            <p>{{$data->price}}</p>
+                            <p>{{ $data->price }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -173,7 +144,7 @@
 
     <!-- Start testimonial Area -->
     <section class="testimonial-area section-gap">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-70 col-lg-8">
                     <div class="title text-center">
@@ -301,7 +272,7 @@
 
     <!-- Start home-about Area -->
     <section class="home-about-area">
-        <div class="container-fluid">
+        <div class="container-fluid" data-aos="fade-up" data-aos-duration="1000">
             <div class="row align-items-center justify-content-end">
                 <div class="col-lg-6 col-md-12 home-about-left">
                     <h1>
@@ -325,8 +296,8 @@
     <!-- End home-about Area -->
 
     <!-- Start blog Area -->
-   <!-- <section class="recent-blog-area section-gap">
-        <div class="container">
+    <section class="recent-blog-area section-gap">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-60 col-lg-9">
                     <div class="title text-center">
