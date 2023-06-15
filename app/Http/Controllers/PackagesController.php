@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePackagesRequest;
 use App\Models\Destination;
 use App\Models\Packages;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class PackagesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePackagesRequest $request)
     {
         // $data = $request->all();
         $destination = $request->input('destination', []);
@@ -132,6 +133,10 @@ class PackagesController extends Controller
     {
         // get post by ID
         $packages = Packages::findOrFail($id);
+
+        // Storage Delete
+        $filePath = 'packages/' . $packages->image;
+        Storage::disk('public')->delete($filePath);
 
         // delete post
         $packages->delete();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HomeController;
@@ -22,7 +23,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/destinations', [HomeController::class, 'destination']);
+Route::get('/destination-detail/{id}', [HomeController::class, 'showDestination']);
 
+Route::get('/packages-page', [HomeController::class, 'packages']);
+Route::get('/packages-detail/{id}', [HomeController::class, 'showPackages']);
+
+Route::resource('/booking', BookingController::class)->middleware(['auth']);
+Route::get('/booking-admin', [BookingController::class, 'indexAdmin'])->middleware('auth');
 
 // Route::get('/dashboard', function () {
 //     return view('admin.index');
@@ -46,3 +54,5 @@ Route::resource('/packages', PackagesController::class)->middleware(['auth', 'mu
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
 Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::post('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');

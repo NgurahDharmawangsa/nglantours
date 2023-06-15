@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/pages/fontawesome.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/pages/datatables.css') }}">
 
@@ -69,6 +70,12 @@
                                 <span>Packages</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {{ request()->segment(1) == 'booking' ? 'active' : '' }}">
+                            <a href="/booking-admin" class='sidebar-link'>
+                                <i class="bi bi-bookmark-fill"></i>
+                                <span>Booking</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -111,7 +118,6 @@
             {{-- Sweet Alert --}}
             <script src="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>
             <script src="{{ asset('assets/js/pages/sweetalert2.js') }}"></script>
-
 </body>
 
 </html>

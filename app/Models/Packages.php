@@ -18,5 +18,10 @@ class Packages extends Model
     {
         return $this->belongsToMany(Destination::class, 'destination_packages', 'packages_id', 'destination_id');
     }
+
+    public function booking()
+    {
+        return $this->hasMany(Booking::class, 'packages_id', 'id');
+    }
     protected $table = 'packages';
 }

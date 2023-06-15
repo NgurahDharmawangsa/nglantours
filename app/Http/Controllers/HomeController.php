@@ -14,4 +14,28 @@ class HomeController extends Controller
         $packages = Packages::get();
         return view('home', compact('destination', 'packages'));
     }
+
+    public function destination()
+    {
+        $destination = Destination::get();
+        return view('client.destination.destination', compact('destination'));
+    }
+
+    public function showDestination(string $id)
+    {
+        $destination = Destination::with('packages')->findOrFail($id);
+        return view('client.destination.detail', compact('destination'));
+    }
+
+    public function packages()
+    {
+        $packages = Packages::get();
+        return view('client.packages.packages', compact('packages'));
+    }
+
+    public function showPackages($id)
+    {
+        $packages = Packages::with('destination')->findOrFail($id);
+        return view('client.packages.detail', compact('packages'));
+    }
 }
