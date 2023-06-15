@@ -13,7 +13,9 @@ class Destination extends Model
     protected $fillable = [
         'name',
         'description',
-        'image'
+        'image',
+        'latitude',
+        'longitude'
     ];
 
     protected $casts = [

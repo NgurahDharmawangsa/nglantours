@@ -135,7 +135,24 @@
                 <h2 class="font-bold text-2xl text-[#FFFFFF]">Register</h2>
                 <p class="text-xs mt-4 text-[#FFFFFF]">Create a new account</p>
 
-                <form action="" class="flex flex-col gap-4">
+                <form action="/register" method="post" class="flex flex-col gap-4">
+                    @csrf
+                    @if (Session::has('success'))
+                        <div id="alertContainer"
+                            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                            role="alert">
+                            <strong class="font-bold">Success!</strong>
+                            <span class="block sm:inline">{{ Session::get('message') }}</span>
+                            <span id="closeButton" class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                <svg class="fill-current h-6 w-6 text-green-500 cursor-pointer" role="button"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <title>Tutup</title>
+                                    <path
+                                        d="M14.348 5.652a1 1 0 0 0-1.414 0L10 8.586 6.066 4.652a1 1 0 1 0-1.414 1.414L8.586 10l-3.934 3.934a1 1 0 1 0 1.414 1.414L10 11.414l3.934 3.934a1 1 0 0 0 1.414-1.414L11.414 10l3.934-3.934a1 1 0 0 0 0-1.414z" />
+                                </svg>
+                            </span>
+                        </div>
+                    @endif
                     <input class="p-2 mt-8 rounded-xl border" type="text" name="name" placeholder="Name">
                     <input class="p-2 rounded-xl border" type="email" name="email" placeholder="Email">
                     <div class="relative">

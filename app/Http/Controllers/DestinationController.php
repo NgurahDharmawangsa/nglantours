@@ -46,6 +46,8 @@ class DestinationController extends Controller
         $destination = Destination::create([
             'name' => $request->name,
             'description' => $request->description,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
             'image' => json_encode($imageData)
         ]);
 

@@ -3,6 +3,10 @@
 @section('title', 'Destination')
 
 @section('content')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
@@ -90,20 +94,40 @@
 
         <div class="col-md-12 col-sm-12 mt-4">
             <div class="card">
-                <div class="card-content">                    
+                <div class="card-content">
                     <div class="card-body">
                         <h6 class="card-title">Deskripsi</h6>
                         <p class="card-text">
-                            {{$destination->description}}
+                            {{ $destination->description }}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <ol>
+    <div class="col-md-12 col-sm-12 mt-4">
+        <div id="mapid" style="height: 400px; border-radius: 10px"></div>
+    </div>
+
+    <ol>
         @foreach ($destination->packages as $item)
-            <li>{{$item->name}}</li>
+            <li>{{ $item->name }}</li>
         @endforeach
-        </ol>
-    @endsection
+    </ol>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script>
+        const latitude = {{ $destination->latitude }};
+        const longitude = {{ $destination->longitude }};
+
+        var leafletMap = L.map('mapid').setView([latitude, longitude], 12);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(leafletMap);
+
+        L.marker([latitude, longitude]).addTo(leafletMap);
+    </script>
+@endsection

@@ -23,8 +23,6 @@
             </div>
         </div>
 
-
-
         <!-- Basic Horizontal form layout section start -->
         <section id="basic-horizontal-layouts">
             <div class="row match-height">
@@ -43,8 +41,9 @@
                                                 <label>Paket Wisata</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="name" class="form-control" name="name"
+                                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
                                                     placeholder="Nama Paket Wisata">
+                                                @error('name') <div class="invalid-feedback">{{$message}}</div> @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Keberangkatan</label>

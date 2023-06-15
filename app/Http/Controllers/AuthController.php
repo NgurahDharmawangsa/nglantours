@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -43,6 +44,20 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
+        return redirect('/login');
+    }
+
+    public function register(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role_id' => 2
+        ]);
+
+        Session::flash('success', 'berhasil');
+        Session::flash('message', 'Berhasil Mendaftar');
         return redirect('/login');
     }
 }

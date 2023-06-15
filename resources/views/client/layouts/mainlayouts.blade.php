@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
+<style>
+    html{
+        scroll-behavior: smooth
+    }
+</style>
+
 <head>
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -17,15 +23,14 @@
     <!-- Site Title -->
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="{{ asset('assets/client/logo/favicon-logo.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('assets/client/logo/favicon-logo.png') }}" type="image/png">
 
     <title>@yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet" />
-    <!--
-   CSS
-   ============================================= -->
+    <!-- CSS ============================================= -->
     <link rel="stylesheet" href="{{ asset('assets/client/css/linearicons.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/client/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/client/css/bootstrap.css') }}" />
@@ -38,7 +43,7 @@
 </head>
 
 <body>
-    <header id="header">
+    <header id="header" style="z-index: 10000">
         <div class="header-top">
             <div class="container">
                 <div class="row align-items-center">
@@ -67,36 +72,20 @@
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="packages.html">Packages</a></li>
-                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/destinations">Destination</a></li>
+                        <li><a href="/packages-page">Packages</a></li>
                         <li class="menu-has-children">
-                            <a href="">Blog</a>
-                            <ul>
-                                <li><a href="blog-home.html">Blog Home</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                            </ul>
+                            @if (Auth::check())
+                                <a href="">{{Auth::user()->name}}</a>
+                                <ul>
+                                    <li><a href="{{ route('booking.index') }}">Booking</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                </ul>
+                            @else
+                                <a href="{{route('login')}}">Login</a>
+                            @endif                            
                         </li>
-                        <li class="menu-has-children">
-                            <a href="">Pages</a>
-                            <ul>
-                                <li><a href="elements.html">Elements</a></li>
-                                <li class="menu-has-children">
-                                    <a href="">Level 2 </a>
-                                    <ul>
-                                        <li><a href="#">Item One</a></li>
-                                        <li><a href="#">Item Two</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        @if (Auth::check())
-                            <li><a href="/logout">Logout</a></li>
-                            <li>{{Auth::user()->name}}</li>
-                        @else
-                            <li><a href="{{route('login')}}">Login</a></li>
-                        @endif                        
                     </ul>
                 </nav>
                 <!-- #nav-menu-container -->
