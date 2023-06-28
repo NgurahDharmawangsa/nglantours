@@ -84,7 +84,7 @@
                                                     style="height: 200px; border-radius: 5px" />
                                             </div>
                                             <div class="details">                                                
-                                                <a href="/destination-detail/{{$item->id}}">
+                                                <a href="/destination-detail/{{$item->name}}">
                                                     <h4 class="title">{{ $item->name }}</h4>
                                                 </a>
                                                 <p>

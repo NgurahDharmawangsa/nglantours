@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Destination;
 use App\Models\Packages;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class DashboardController extends Controller
     {
         $destination = Destination::count();
         $packages = Packages::count();
-        return view('admin.index', compact('destination', 'packages'));
+        $booking = Booking::count();
+        return view('admin.index', compact('destination', 'packages', 'booking'));
     }   
 }

@@ -30,7 +30,9 @@ Route::get('/packages-page', [HomeController::class, 'packages']);
 Route::get('/packages-detail/{id}', [HomeController::class, 'showPackages']);
 
 Route::resource('/booking', BookingController::class)->middleware(['auth']);
-Route::get('/booking-admin', [BookingController::class, 'indexAdmin'])->middleware('auth');
+Route::get('/booking-admin', [BookingController::class, 'indexAdmin'])->middleware('auth')->name('booking-admin');
+Route::get('/booking/detail/{id}', [BookingController::class, 'getDetail'])->name('booking.detail');
+
 
 // Route::get('/dashboard', function () {
 //     return view('admin.index');

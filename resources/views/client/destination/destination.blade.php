@@ -97,7 +97,7 @@
                                 <h4>{{ $item->name }}</h4>
                                 <p class="d-flex justify-content-between align-items-center">
                                     {{ Str::limit($item->description, 25) }}
-                                    <a href="destination-detail/{{$item->id}}" class="price-btn">Detail</a>
+                                    <a href="destination-detail/{{$item->name}}" class="price-btn">Detail</a>
                                 </p>
                             </div>
                         </div>

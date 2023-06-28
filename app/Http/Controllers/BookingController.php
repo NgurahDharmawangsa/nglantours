@@ -148,4 +148,11 @@ class BookingController extends Controller
         $booking = Booking::get();
         return view('admin.booking.booking', compact('booking'));
     }
+
+    public function getDetail($id)
+    {
+        $booking = Booking::find($id);
+
+        return response()->json($booking);
+    }
 }
