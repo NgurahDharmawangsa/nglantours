@@ -70,8 +70,8 @@
                                 <span>Packages</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->segment(1) == 'booking' ? 'active' : '' }}">
-                            <a href="/booking-admin" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->segment(1) == 'booking-admin' ? 'active' : '' }}">
+                            <a href="{{ route('booking-admin') }}" class='sidebar-link'>
                                 <i class="bi bi-bookmark-fill"></i>
                                 <span>Booking</span>
                             </a>

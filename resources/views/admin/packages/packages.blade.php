@@ -43,7 +43,7 @@
                 <div class="card-header">
                     <a href="{{ route('packages.create') }}" class="btn btn-primary">Add Data</a>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table" id="table1">
                         <thead>
                             <tr>

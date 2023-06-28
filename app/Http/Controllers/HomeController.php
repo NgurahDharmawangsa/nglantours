@@ -23,7 +23,7 @@ class HomeController extends Controller
 
     public function showDestination(string $id)
     {
-        $destination = Destination::with('packages')->findOrFail($id);
+        $destination = Destination::with('packages')->where('name', '=', $id)->first();
         return view('client.destination.detail', compact('destination'));
     }
 
