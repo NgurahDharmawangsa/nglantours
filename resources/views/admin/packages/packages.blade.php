@@ -73,11 +73,11 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonEmoji">
-                                                <a class="dropdown-item text-white"
+                                                <a class="dropdown-item text-secondary"
                                                     href="{{ route('packages.show', $data->id) }}"><span
                                                         class="dropdown-item-emoji bi bi-archive-fill text-success me-2"></span>
                                                     Detail</a>
-                                                <a class="dropdown-item text-white"
+                                                <a class="dropdown-item text-secondary"
                                                     href="{{ route('packages.edit', $data->id) }}"><span
                                                         class="dropdown-item-emoji bi bi-pencil-fill text-primary me-2"></span>
                                                     Edit</a>
@@ -85,7 +85,7 @@
                                                     style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="dropdown-item text-white btn-delete-post">
+                                                    <button type="submit" class="dropdown-item text-secondary btn-delete-post">
                                                         <span
                                                             class="dropdown-item-emoji bi bi-trash-fill text-danger me-2"></span>
                                                         Hapus

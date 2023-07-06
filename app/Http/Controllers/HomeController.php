@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destination;
 use App\Models\Packages;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -35,7 +36,9 @@ class HomeController extends Controller
 
     public function showPackages($id)
     {
+        // $review = Review::get();
         $packages = Packages::with('destination')->findOrFail($id);
-        return view('client.packages.detail', compact('packages'));
+        $review = Review::where('packages_id', $id)->get();
+        return view('client.packages.detail', compact('packages','review'));
     }
 }
