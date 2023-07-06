@@ -27,4 +27,13 @@ class StorePackagesRequest extends FormRequest
             'image' => 'required',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nama Diperlukan',
+            'name.unique' => 'Nama Paket Sudah Ada',
+            'price.required' => 'Harga Diperlukan'
+        ];
+    }
 }

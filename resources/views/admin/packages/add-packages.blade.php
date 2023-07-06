@@ -33,7 +33,8 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" action="{{route('packages.store')}}" method="post" enctype="multipart/form-data">
+                                <form class="form form-horizontal" action="{{ route('packages.store') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
@@ -41,37 +42,44 @@
                                                 <label>Paket Wisata</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
-                                                    placeholder="Nama Paket Wisata">
-                                                @error('name') <div class="invalid-feedback">{{$message}}</div> @enderror
+                                                <input type="text" id="name"
+                                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                                    placeholder="Nama Paket Wisata" value="{{old('name')}}">
+                                                @error('name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Keberangkatan</label>
                                             </div>
                                             <div class="col-md-10 form-group">
                                                 <input type="date" id="start_date" class="form-control" name="start_date"
-                                                    placeholder="Nama Destinasi">
+                                                    placeholder="Nama Destinasi" value="{{old('start_date')}}">
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Kedatangan</label>
                                             </div>
                                             <div class="col-md-10 form-group">
                                                 <input type="date" id="first-name" class="form-control" name="end_date"
-                                                    placeholder="Nama Destinasi">
+                                                    placeholder="Nama Destinasi" value="{{old('end_date')}}" >
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Harga</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="first-name" class="form-control" name="price"
-                                                    placeholder="Harga">
+                                                <input type="text" id="first-name"
+                                                    class="form-control @error('price') is-invalid @enderror" name="price"
+                                                    placeholder="Harga" value="{{old('price')}}">
+                                                @error('price')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Kapasitas Maksimal</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="number" id="first-name" class="form-control" name="max_capacity"
-                                                    placeholder="Kapasitas Maksimal">
+                                                <input type="number" id="first-name" class="form-control"
+                                                    name="max_capacity" placeholder="Kapasitas Maksimal" value="{{old('max_capacity')}}">
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Gambar</label>
@@ -81,7 +89,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <label for="destination-dropdown">Pilih Destinasi</label>
-                                            </div>                                            
+                                            </div>
                                             <div class="dropdown col-md-10 form-group">
                                                 <button class="btn btn-primary dropdown-toggle me-1" type="button"
                                                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -91,17 +99,19 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <div class="checkbox-group">
                                                         @foreach ($destination as $data)
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" name="destination[]" value="{{ $data->id }}"
-                                                                id="destination-{{ $data->id }}">
-                                                            <label class="form-check-label" for="destination-{{ $data->id }}">
-                                                                {{ $data->name }}
-                                                            </label>
-                                                        </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="destination[]" value="{{ $data->id }}"
+                                                                    id="destination-{{ $data->id }}">
+                                                                <label class="form-check-label"
+                                                                    for="destination-{{ $data->id }}">
+                                                                    {{ $data->name }}
+                                                                </label>
+                                                            </div>
                                                         @endforeach
                                                     </div>
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                                 <button type="reset"

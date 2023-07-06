@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,9 @@ Route::get('/packages-detail/{id}', [HomeController::class, 'showPackages']);
 Route::resource('/booking', BookingController::class)->middleware(['auth']);
 Route::get('/booking-admin', [BookingController::class, 'indexAdmin'])->middleware('auth')->name('booking-admin');
 Route::get('/booking/detail/{id}', [BookingController::class, 'getDetail'])->name('booking.detail');
+
+Route::resource('/review', ReviewController::class)->middleware(['auth']);
+
 
 
 // Route::get('/dashboard', function () {

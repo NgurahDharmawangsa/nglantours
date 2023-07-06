@@ -28,6 +28,7 @@
     <div class="container mb-5">
         <div class="comment-form" style="border-radius: 10px">
             <h4>Booking Now!</h4>
+            <p style="margin-top: -30px; margin-bottom: 20px">{{$packages->name}}</p>
             <form method="post" action="{{ route('booking.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group form-inline">
