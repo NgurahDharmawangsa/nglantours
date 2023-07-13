@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="{{ asset('assets/client/css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/client/css/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/client/css/main.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>

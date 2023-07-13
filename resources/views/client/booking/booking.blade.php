@@ -2,10 +2,33 @@
 @section('title', 'Home')
 
 @section('content')
-    {{-- @foreach ($booking as $item)
-        <li>{{ $item->packages->name }}</li>
-    @endforeach --}}
-    {{-- {{$packages}} --}}
+    
+    @if (session('warning'))
+        <script>
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: '{{ session('warning') }}'
+            });
+        </script>
+    @elseif (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}'
+            });
+        </script>
+    @endif
+    <style>
+        .nice-select.swal2-select.open {
+            display: none;
+        }
+
+        .nice-select.swal2-select {
+            display: none;
+        }
+    </style>
     <!-- start banner Area -->
     <section class="relative about-banner">
         <div class="overlay overlay-bg"></div>
@@ -28,7 +51,7 @@
     <div class="container mb-5">
         <div class="comment-form" style="border-radius: 10px">
             <h4>Booking Now!</h4>
-            <p style="margin-top: -30px; margin-bottom: 20px">{{$packages->name}}</p>
+            <p style="margin-top: -30px; margin-bottom: 20px">{{ $packages->name }}</p>
             <form method="post" action="{{ route('booking.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group form-inline">
@@ -74,7 +97,8 @@
                     <input class="form-control" type="file" id="formFile" name="payment_proof">
                 </div>
                 <input type="hidden" name="packages_id" value="{{ $packages->id }}">
-                <button type="submit" class="primary-btn text-uppercase"x`>Submit</button>
+                <input type="hidden" name="max_capacity" value="{{ $packages->max_capacity }}">
+                <button type="submit" class="primary-btn text-uppercase">Submit</button>
             </form>
         </div>
     </div>

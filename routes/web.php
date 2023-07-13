@@ -33,6 +33,8 @@ Route::get('/packages-detail/{id}', [HomeController::class, 'showPackages']);
 Route::resource('/booking', BookingController::class)->middleware(['auth']);
 Route::get('/booking-admin', [BookingController::class, 'indexAdmin'])->middleware('auth')->name('booking-admin');
 Route::get('/booking/detail/{id}', [BookingController::class, 'getDetail'])->name('booking.detail');
+Route::get('/exportpdf', [BookingController::class, 'exportPdf'])->name('booking.export');
+
 
 Route::resource('/review', ReviewController::class)->middleware(['auth']);
 

@@ -41,25 +41,29 @@
             </div>
             <div class="row">
                 <div class="active-recent-blog-carusel">
+                    @php $count = 0; @endphp
                     @foreach ($destination as $item)
-                        <div class="single-recent-blog-post item">
-                            <div class="thumb">
-                                @php
-                                    $images = json_decode($item->image);
-                                @endphp
-                                <img class="img-fluid" src="{{ asset('storage/destination/' . $images[0]) }}" alt=""
-                                    style="height: 200px; border-radius: 5px" />
-                            </div>
-                            <div class="details">
-                                <a href="#">
-                                    <h4 class="title">{{ $item->name }}</h4>
-                                </a>
-                                <p>{{ Str::limit($item->description, 50) }}</p>
-                                <div class="btn btn-sm btn-warning">
-                                    <a href="#" class="text-white">Detail</a>
+                        @if ($count < 6)
+                            <div class="single-recent-blog-post item">
+                                <div class="thumb">
+                                    @php
+                                        $images = json_decode($item->image);
+                                    @endphp
+                                    <img class="img-fluid" src="{{ asset('storage/destination/' . $images[0]) }}"
+                                        alt="" style="height: 200px; border-radius: 5px" />
+                                </div>
+                                <div class="details">
+                                    <a href="#">
+                                        <h4 class="title">{{ $item->name }}</h4>
+                                    </a>
+                                    <p>{{ Str::limit($item->description, 50) }}</p>
+                                    <div class="btn btn-sm btn-warning">
+                                        <a href="destination-detail/{{ $item->name }}" class="text-white">Detail</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            @php $count++; @endphp
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -175,114 +179,29 @@
             </div>
             <div class="row">
                 <div class="active-testimonial">
-                    <div class="single-testimonial item d-flex flex-row">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('assets/client/img/elements/user1.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="desc">
-                            <p>Do you want to be even more successful? Learn to love learning and growth. The more effort
-                                you put into improving your skills, the bigger the payoff you.</p>
-                            <h4>Harriet Maxwell</h4>
-                            <div class="star">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
+                    @foreach ($review as $item)
+                        <div class="single-testimonial item d-flex flex-row" style="height: 160px;">
+                            <div class="thumb">
+                                <img class="img-fluid" src="{{ asset('assets/client/img/elements/user2.png') }}"
+                                    alt="" />
+                            </div>
+                            <div class="desc">
+                                <p>{{ $item->review }}</p>
+                                @foreach ($item->user->booking->unique('user_id') as $data)
+                                    <h4>{{ $data->name }}</h4>
+                                @endforeach
+                                <div class="star">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($item->rating >= $i)
+                                            <span class="fa fa-star checked"></span>
+                                        @else
+                                            <span class="fa fa-star"></span>
+                                        @endif
+                                    @endfor
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="single-testimonial item d-flex flex-row">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('assets/client/img/elements/user2.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="desc">
-                            <p>A purpose is the eternal condition for success. Every former smoker can tell you just how
-                                hard it is to stop smoking cigarettes. However.</p>
-                            <h4>Carolyn Craig</h4>
-                            <div class="star">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-testimonial item d-flex flex-row">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('assets/client/img/elements/user1.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="desc">
-                            <p>Do you want to be even more successful? Learn to love learning and growth. The more effort
-                                you put into improving your skills, the bigger the payoff you.</p>
-                            <h4>Harriet Maxwell</h4>
-                            <div class="star">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-testimonial item d-flex flex-row">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('assets/client/img/elements/user2.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="desc">
-                            <p>A purpose is the eternal condition for success. Every former smoker can tell you just how
-                                hard it is to stop smoking cigarettes. However.</p>
-                            <h4>Carolyn Craig</h4>
-                            <div class="star">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-testimonial item d-flex flex-row">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('assets/client/img/elements/user1.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="desc">
-                            <p>Do you want to be even more successful? Learn to love learning and growth. The more effort
-                                you put into improving your skills, the bigger the payoff you.</p>
-                            <h4>Harriet Maxwell</h4>
-                            <div class="star">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-testimonial item d-flex flex-row">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('assets/client/img/elements/user2.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="desc">
-                            <p>A purpose is the eternal condition for success. Every former smoker can tell you just how
-                                hard it is to stop smoking cigarettes. However.</p>
-                            <h4>Carolyn Craig</h4>
-                            <div class="star">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -308,8 +227,7 @@
                         <a href="https://api.whatsapp.com/send?phone=6281529928192"
                             class="primary-btn text-uppercase">request custom price</a>
                     @else
-                        <a href="/login"
-                            class="primary-btn text-uppercase">request custom price</a>
+                        <a href="/login" class="primary-btn text-uppercase">request custom price</a>
                     @endif
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-right no-padding">
