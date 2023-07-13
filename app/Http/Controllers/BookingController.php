@@ -8,6 +8,7 @@ use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class BookingController extends Controller
 {
@@ -70,6 +71,16 @@ class BookingController extends Controller
             $booking->payment_proof = $image->hashName();
             $booking->payment_method = $request->payment_method;
             $booking->status = "pending";
+            
+            $packages = Packages::findOrFail($request->packages_id);
+            if($packages->max_capacity >= $request->participants){
+                $packages->max_capacity -= $request->participants;
+                $packages->save();
+                $booking->save();
+                return redirect()->back()->with('success', 'Booking successfull.');
+            }else{
+                return redirect()->back()->with('warning', 'Max capacity exceeded. Cannot book the package.');
+            }
         } else {
             $booking = new Booking();
             $booking->user_id = $user->id;
@@ -81,12 +92,23 @@ class BookingController extends Controller
             $booking->total_price = $request->total_price;
             $booking->payment_method = $request->payment_method;
             $booking->status = "pending";
+    
+            $packages = Packages::findOrFail($request->packages_id);
+            if($packages->max_capacity >= $request->participants){
+                $packages->max_capacity -= $request->participants;
+                $packages->save();
+                $booking->save();
+                return redirect()->back()->with('success', 'Booking successfull.');
+            }else{
+                return redirect()->back()->with('warning', 'Max capacity exceeded. Cannot book the package.');
+            }
         }
-        // dd($booking);
+        // dd($respart);
 
-        $booking->save();
+        // $booking->save();
+        // $packages->save();
 
-        return redirect('/');
+        // return redirect('/');
     }
 
     /**
@@ -114,8 +136,14 @@ class BookingController extends Controller
     public function update(Request $request, string $id)
     {
         $booking = Booking::findOrFail($id);
+        $packages = Packages::findOrFail($request->packages_id);
 
         $booking->status = $request->input('status');
+        $booking->participants = $request->participants;
+        if($booking->status == 'failed'){
+            $packages->max_capacity += $booking->participants;
+            $packages->save();
+        }
         $booking->save();
 
         if ($booking) {
@@ -155,5 +183,14 @@ class BookingController extends Controller
         $booking = Booking::find($id);
 
         return response()->json($booking);
+    }
+
+    public function exportPdf()
+    {
+        $booking = Booking::get();
+        view()->share('booking', $booking);
+
+        $pdf = PDF::loadview('admin.booking.exportpdf', compact('booking'))->setPaper('a4', 'landscape');
+        return $pdf->download('laporan.pdf');
     }
 }

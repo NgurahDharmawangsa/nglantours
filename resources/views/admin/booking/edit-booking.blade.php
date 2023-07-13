@@ -46,6 +46,13 @@
                                                     value="{{ $booking->name }}" readonly>
                                             </div>
                                             <div class="col-md-2">
+                                                <label>Pakages</label>
+                                            </div>
+                                            <div class="col-md-10 form-group">
+                                                <input type="text" id="packages_id" class="form-control" name="packages_id"
+                                                    value="{{ $booking->packages->name }}" readonly>
+                                            </div>
+                                            <div class="col-md-2">
                                                 <label>Telp Number</label>
                                             </div>
                                             <div class="col-md-10 form-group">
@@ -113,6 +120,7 @@
                                                     @endif
                                                 </select>
                                             </div>
+                                            <input type="hidden" name="packages_id" id="packages_review_id" value="{{$booking->packages_id}}">
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
                                             </div>

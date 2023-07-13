@@ -100,9 +100,8 @@
                     </div>
 
                     <div class="comments-area">
-                        <h4>{{$review->count()}} Comments</h4>
+                        <h4>{{ $review->count() }} Comments</h4>
                         @foreach ($review as $item)
-                            {{-- {{$item}} --}}
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -110,7 +109,9 @@
                                             <img src="img/blog/c1.jpg" alt="">
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#">{{ $item->user_id }}</a></h5>
+                                            @foreach ($item->user->booking->unique('user_id') as $data)
+                                                <h5><a href="#">{{ $data->name }}</a></h5>
+                                            @endforeach
                                             <p class="date">{{ $item->created_at }}</p>
                                             <p class="comment">
                                                 {{ $item->review }}

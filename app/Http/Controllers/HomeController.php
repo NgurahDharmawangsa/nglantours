@@ -13,7 +13,8 @@ class HomeController extends Controller
     {
         $destination = Destination::get();
         $packages = Packages::get();
-        return view('home', compact('destination', 'packages'));
+        $review = Review::with('user')->get();
+        return view('home', compact('destination', 'packages', 'review'));
     }
 
     public function destination()
@@ -38,7 +39,7 @@ class HomeController extends Controller
     {
         // $review = Review::get();
         $packages = Packages::with('destination')->findOrFail($id);
-        $review = Review::where('packages_id', $id)->get();
+        $review = Review::with('user')->where('packages_id', $id)->get();
         return view('client.packages.detail', compact('packages','review'));
     }
 }

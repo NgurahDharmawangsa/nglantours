@@ -51,7 +51,7 @@
                                         alt="" style="width: 944px; height: 400px;">
                                 </div>
                                 <div class="price-detials">
-                                    <a href="#" class="price-btn font-weight-normal">Detail</a>
+                                    <a href="destination-detail/{{$item->name}}" class="price-btn font-weight-normal">Detail</a>
                                 </div>
                                 <div class="details">
                                     <h4 class="text-white">{{ $item->name }}</h4>
