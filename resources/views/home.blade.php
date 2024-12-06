@@ -140,7 +140,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-70 col-lg-9">
                     <div class="title text-center">
-                        <h1 class="mb-10">Other issues we can help you with</h1>
+                        <h1 class="mb-10">Our Packages</h1>
                         <p>We all live in an age that belongs to the young at heart. Life that is.</p>
                     </div>
                 </div>

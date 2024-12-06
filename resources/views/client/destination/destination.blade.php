@@ -124,7 +124,7 @@
                         standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the
                         job is beyond reproach. inappropriate behavior is often laughed.
                     </p>
-                    <a href="#" class="primary-btn text-uppercase">request custom price</a>
+                    <a href="https://api.whatsapp.com/send?phone=6281529928192" class="primary-btn text-uppercase">request custom price</a>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-right no-padding">
                     <img class="img-fluid" src="{{ asset('assets/client/img/packages/about-img.jpg') }}" alt="">

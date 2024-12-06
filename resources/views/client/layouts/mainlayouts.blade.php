@@ -50,18 +50,18 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-sm-6 col-6 header-top-left">
-                        <ul>
+                        {{-- <ul>
                             <li><a href="#">Visit Us</a></li>
                             <li><a href="#">Buy Tickets</a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="col-lg-6 col-sm-6 col-6 header-top-right">
-                        <div class="header-social">
+                        {{-- <div class="header-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-dribbble"></i></a>
                             <a href="#"><i class="fa fa-behance"></i></a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.html"><img src="{{ asset('assets/client/img/logo.png') }}" alt=""
+                    <a href="/"><img src="{{ asset('assets/logo travek.png') }}" style="height: 20px; scale: 2.5; margin-left: 20px; filter: invert(1);" alt=""
                             title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
@@ -120,17 +120,13 @@
                             <div class="col">
                                 <ul>
                                     <li><a href="#">Home</a></li>
-                                    <li><a href="#">Feature</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#">Portfolio</a></li>
+                                    <li><a href="#">Destination</a></li>
                                 </ul>
                             </div>
                             <div class="col">
                                 <ul>
-                                    <li><a href="#">Team</a></li>
-                                    <li><a href="#">Pricing</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Packages</a></li>
+                                    <li><a href="#">Login</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -159,14 +155,14 @@
                     <div class="single-footer-widget mail-chimp">
                         <h6 class="mb-20">InstaFeed</h6>
                         <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="{{ asset('assets/client/img/i1.jpg') }}" alt="" /></li>
-                            <li><img src="{{ asset('assets/client/img/i2.jpg') }}" alt="" /></li>
-                            <li><img src="{{ asset('assets/client/img/i3.jpg') }}" alt="" /></li>
-                            <li><img src="{{ asset('assets/client/img/i4.jpg') }}" alt="" /></li>
-                            <li><img src="{{ asset('assets/client/img/i5.jpg') }}" alt="" /></li>
-                            <li><img src="{{ asset('assets/client/img/i6.jpg') }}" alt="" /></li>
-                            <li><img src="{{ asset('assets/client/img/i7.jpg') }}" alt="" /></li>
-                            <li><img src="{{ asset('assets/client/img/i8.jpg') }}" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=1" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=2" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=3" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=4" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=5" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=6" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=7" alt="" /></li>
+                            <li><img src="https://source.unsplash.com/random/58x58?sig=8" alt="" /></li>
                         </ul>
                     </div>
                 </div>
@@ -178,17 +174,15 @@
                     Copyright &copy;
                     <script>
                         document.write(new Date().getFullYear());
-                    </script>
-                    All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </script> by <a href="https://www.instagram.com/ngrhdhrmwngs" target="_blank">Ngurah Dharmawangsa</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
-                <div class="col-lg-4 col-sm-12 footer-social">
+                {{-- <div class="col-lg-4 col-sm-12 footer-social">
                     <a href="#"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-twitter"></i></a>
                     <a href="#"><i class="fa fa-dribbble"></i></a>
                     <a href="#"><i class="fa fa-behance"></i></a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </footer>

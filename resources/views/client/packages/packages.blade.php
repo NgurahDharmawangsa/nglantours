@@ -109,7 +109,7 @@
                         standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the
                         job is beyond reproach. inappropriate behavior is often laughed.
                     </p>
-                    <a href="#" class="primary-btn text-uppercase">request custom price</a>
+                    <a href="https://api.whatsapp.com/send?phone=6281529928192" class="primary-btn text-uppercase">request custom price</a>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-right no-padding">
                     <img class="img-fluid" src="https://images.unsplash.com/photo-1574080344876-1f4089ba07fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80" alt="">
